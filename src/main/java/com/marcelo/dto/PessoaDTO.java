@@ -2,6 +2,9 @@ package com.marcelo.dto;
 
 import java.sql.Date;
 
+import com.marcelo.model.Endereco;
+import com.marcelo.model.Pessoa;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +14,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PessoaDTO {
     private long id;
+    private String nome;
     private Date dataNascimento;
-    private EnderecoDTO endereco;
+    private Endereco endereco;
+
+    public PessoaDTO fromPessoa(Pessoa pessoa){
+        return new PessoaDTO(
+            pessoa.getId(),
+            pessoa.getNome(),
+            pessoa.getDataNascimento(),
+            pessoa.getEndereco()
+        );
+    }
+
+    public Pessoa toPessoa(PessoaDTO pessoaDTO){
+        return new Pessoa(
+            pessoaDTO.getId(),
+            pessoaDTO.getNome(),
+            pessoaDTO.getDataNascimento(),
+            pessoaDTO.getEndereco()
+        );
+    }
 }
