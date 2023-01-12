@@ -1,6 +1,6 @@
-package com.marcelo.dto;
+package com.attornatus.dto;
 
-import com.marcelo.model.Endereco;
+import com.attornatus.model.Endereco;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

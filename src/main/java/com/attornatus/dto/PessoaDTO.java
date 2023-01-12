@@ -1,9 +1,9 @@
-package com.marcelo.dto;
+package com.attornatus.dto;
 
 import java.sql.Date;
 
-import com.marcelo.model.Endereco;
-import com.marcelo.model.Pessoa;
+import com.attornatus.model.Endereco;
+import com.attornatus.model.Pessoa;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

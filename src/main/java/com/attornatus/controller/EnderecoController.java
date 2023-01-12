@@ -1,4 +1,4 @@
-package com.marcelo.controller;
+package com.attornatus.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.marcelo.dto.EnderecoDTO;
-import com.marcelo.services.EnderecoService;
+import com.attornatus.dto.EnderecoDTO;
+import com.attornatus.services.EnderecoService;
 
 @RestController
 @RequestMapping("/endereco")

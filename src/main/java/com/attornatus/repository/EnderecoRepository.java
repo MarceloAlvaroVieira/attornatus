@@ -1,7 +1,7 @@
-package com.marcelo.repository;
+package com.attornatus.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.marcelo.model.Endereco;
+import com.attornatus.model.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long>{}

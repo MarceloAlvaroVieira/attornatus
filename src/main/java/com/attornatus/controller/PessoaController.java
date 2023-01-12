@@ -1,4 +1,4 @@
-package com.marcelo.controller;
+package com.attornatus.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.marcelo.dto.PessoaDTO;
-import com.marcelo.services.PessoaService;
+import com.attornatus.dto.PessoaDTO;
+import com.attornatus.services.PessoaService;
 
 @RestController
 @RequestMapping("/pessoa")

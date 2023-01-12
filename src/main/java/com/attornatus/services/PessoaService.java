@@ -1,4 +1,4 @@
-package com.marcelo.services;
+package com.attornatus.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.marcelo.dto.PessoaDTO;
-import com.marcelo.exception.ResourceNotFoundException;
-import com.marcelo.model.Pessoa;
-import com.marcelo.repository.PessoaRepository;
+import com.attornatus.dto.PessoaDTO;
+import com.attornatus.exception.ResourceNotFoundException;
+import com.attornatus.model.Pessoa;
+import com.attornatus.repository.PessoaRepository;
 
 @Service
 public class PessoaService {

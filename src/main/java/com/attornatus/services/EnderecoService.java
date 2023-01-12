@@ -1,4 +1,4 @@
-package com.marcelo.services;
+package com.attornatus.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.marcelo.dto.EnderecoDTO;
-import com.marcelo.exception.ResourceNotFoundException;
-import com.marcelo.model.Endereco;
-import com.marcelo.repository.EnderecoRepository;
+import com.attornatus.dto.EnderecoDTO;
+import com.attornatus.exception.ResourceNotFoundException;
+import com.attornatus.model.Endereco;
+import com.attornatus.repository.EnderecoRepository;
 
 @Service
 public class EnderecoService {

@@ -1,4 +1,4 @@
-package com.marcelo.config;
+package com.attornatus.config;
 
 import org.springframework.context.annotation.Configuration;
 
