@@ -22,8 +22,8 @@ public class PessoaController {
     private PessoaService service;
 
     @PostMapping()
-    public ResponseEntity<PessoaDTO> create(@RequestBody Pessoa pessoa){
-        return service.create(pessoa);
+    public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO pessoaDTO){
+        return service.create(pessoaDTO);
     }
 
     @GetMapping()
@@ -32,17 +32,17 @@ public class PessoaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<PessoaDTO>> getById(@PathVariable int id){
+    public ResponseEntity<PessoaDTO> getById(@PathVariable Long id){
         return service.getById(id);    
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaDTO> update(@PathVariable int id, @RequestBody Pessoa pessoa){
-        return service.update(id, pessoa);
+    public ResponseEntity<PessoaDTO> update(@PathVariable Long id, @RequestBody PessoaDTO pessoaDTO){
+        return service.update(id, pessoaDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id){
+    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable Long id){
         return service.delete(id);
     }
     
