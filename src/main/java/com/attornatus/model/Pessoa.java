@@ -34,5 +34,6 @@ public class Pessoa implements Serializable{
     private Date dataNascimento;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "endereco")
     private Endereco endereco;
 }

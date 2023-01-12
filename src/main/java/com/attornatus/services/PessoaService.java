@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.attornatus.dto.PessoaDTO;
 import com.attornatus.exception.ResourceNotFoundException;
+import com.attornatus.model.Endereco;
 import com.attornatus.model.Pessoa;
+import com.attornatus.repository.EnderecoRepository;
 import com.attornatus.repository.PessoaRepository;
 
 @Service
@@ -20,7 +22,24 @@ public class PessoaService {
     @Autowired
     PessoaRepository repository;
 
+    @Autowired
+    EnderecoRepository enderecoRepository;
+
     public ResponseEntity<PessoaDTO> create(PessoaDTO pessoaDTO) {
+
+        Endereco endereco = enderecoRepository
+            .findByLogradouroAndCepAndCidadeAndNumero(
+                pessoaDTO.getEndereco().getLogradouro(),
+                pessoaDTO.getEndereco().getCep(),
+                pessoaDTO.getEndereco().getCidade(),
+                pessoaDTO.getEndereco().getNumero()
+            );
+
+        if(endereco == null){
+            endereco = enderecoRepository.save(pessoaDTO.getEndereco());
+        }
+        pessoaDTO.setEndereco(endereco);
+
         Pessoa pessoa = repository.save(pessoaDTO.toPessoa());
         return ResponseEntity.ok(new PessoaDTO().fromPessoa(pessoa));
     }
