@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marcelo.dto.EnderecoDTO;
-import com.marcelo.model.Endereco;
 import com.marcelo.services.EnderecoService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/endereco")
 public class EnderecoController {
     
     @Autowired
@@ -36,7 +35,7 @@ public class EnderecoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<EnderecoDTO>> getById(@PathVariable Long id){
+    public ResponseEntity<EnderecoDTO> getById(@PathVariable Long id){
         return service.getById(id);    
     }
 
