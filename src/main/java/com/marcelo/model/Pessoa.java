@@ -1,5 +1,6 @@
 package com.marcelo.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -18,8 +19,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pessoa {
+public class Pessoa implements Serializable{
 
+    static private final long serialVersionUID=1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

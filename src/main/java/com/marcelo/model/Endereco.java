@@ -1,5 +1,7 @@
 package com.marcelo.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Endereco {
+public class Endereco implements Serializable{
+
+    static private final long serialVersionUID=1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
