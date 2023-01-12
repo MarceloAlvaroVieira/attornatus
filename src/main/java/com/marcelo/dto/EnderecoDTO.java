@@ -26,13 +26,13 @@ public class EnderecoDTO {
         );
     }
 
-    public Endereco toEndereco(EnderecoDTO enderecoDTO){
+    public Endereco toEndereco(){
         return new Endereco(
-            enderecoDTO.getId(),
-            enderecoDTO.getLogradouro(),
-            enderecoDTO.getCep(),
-            enderecoDTO.getNumero(),
-            enderecoDTO.getCidade()
+            this.getId(),
+            this.getLogradouro(),
+            this.getCep(),
+            this.getNumero(),
+            this.getCidade()
         );
     }
 }

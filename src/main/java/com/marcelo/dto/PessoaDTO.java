@@ -27,12 +27,12 @@ public class PessoaDTO {
         );
     }
 
-    public Pessoa toPessoa(PessoaDTO pessoaDTO){
+    public Pessoa toPessoa(){
         return new Pessoa(
-            pessoaDTO.getId(),
-            pessoaDTO.getNome(),
-            pessoaDTO.getDataNascimento(),
-            pessoaDTO.getEndereco()
+            this.getId(),
+            this.getNome(),
+            this.getDataNascimento(),
+            this.getEndereco()
         );
     }
 }
