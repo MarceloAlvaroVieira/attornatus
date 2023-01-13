@@ -34,7 +34,7 @@ public class Pessoa implements Serializable{
     @Column(nullable = false)
     private Date dataNascimento;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "endereco")
     private Endereco endereco;
 }
