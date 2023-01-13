@@ -3,7 +3,6 @@ package com.attornatus.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,7 +33,7 @@ public class Pessoa implements Serializable{
     @Column(nullable = false)
     private Date dataNascimento;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "endereco")
     private Endereco endereco;
 }
