@@ -18,13 +18,11 @@ public class PessoaDTO {
     private Date dataNascimento;
     private Endereco endereco;
 
-    public PessoaDTO fromPessoa(Pessoa pessoa){
-        return new PessoaDTO(
-            pessoa.getId(),
-            pessoa.getNome(),
-            pessoa.getDataNascimento(),
-            pessoa.getEndereco()
-        );
+    public PessoaDTO(Pessoa pessoa){
+        this.id = pessoa.getId();
+        this.nome = pessoa.getNome();
+        this.dataNascimento = pessoa.getDataNascimento();
+        this.endereco = pessoa.getEndereco();
     }
 
     public Pessoa toPessoa(){

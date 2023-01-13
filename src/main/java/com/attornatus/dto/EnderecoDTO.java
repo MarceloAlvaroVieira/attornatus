@@ -16,14 +16,12 @@ public class EnderecoDTO {
     private int numero;
     private String cidade;
 
-    public EnderecoDTO fromEndereco(Endereco endereco){
-        return new EnderecoDTO(
-            endereco.getId(),
-            endereco.getLogradouro(),
-            endereco.getCep(),
-            endereco.getNumero(),
-            endereco.getCidade()
-        );
+    public EnderecoDTO(Endereco endereco){
+        this.id = endereco.getId();
+        this.logradouro = endereco.getLogradouro();
+        this.cep = endereco.getCep();
+        this.numero = endereco.getNumero();
+        this.cidade = endereco.getCidade();
     }
 
     public Endereco toEndereco(){
