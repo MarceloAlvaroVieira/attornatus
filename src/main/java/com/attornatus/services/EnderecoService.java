@@ -22,7 +22,7 @@ public class EnderecoService {
 
     public ResponseEntity<EnderecoDTO> create(EnderecoDTO enderecoDTO) {
         Endereco endereco = repository.save(enderecoDTO.toEndereco());
-        return ResponseEntity.ok(new EnderecoDTO().fromEndereco(endereco));
+        return ResponseEntity.ok(new EnderecoDTO(endereco));
     }
 
     public ResponseEntity<List<EnderecoDTO>> read() {
@@ -31,7 +31,7 @@ public class EnderecoService {
         List<EnderecoDTO> enderecosDTO = new ArrayList<>();
 
         enderecos.forEach((endereco) -> {
-            enderecosDTO.add(new EnderecoDTO().fromEndereco(endereco));
+            enderecosDTO.add(new EnderecoDTO(endereco));
         });
 
         return ResponseEntity.ok(enderecosDTO);
@@ -42,7 +42,7 @@ public class EnderecoService {
         Endereco endereco = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Endereco não encontrado"));
 
-        return ResponseEntity.ok(new EnderecoDTO().fromEndereco(endereco));
+        return ResponseEntity.ok(new EnderecoDTO(endereco));
     }
 
     public ResponseEntity<EnderecoDTO> update(Long id, EnderecoDTO enderecoDTO) {
@@ -52,7 +52,7 @@ public class EnderecoService {
 
         endereco = repository.save(enderecoDTO.toEndereco());
 
-        return ResponseEntity.ok(new EnderecoDTO().fromEndereco(endereco));
+        return ResponseEntity.ok(new EnderecoDTO(endereco));
     }
 
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {

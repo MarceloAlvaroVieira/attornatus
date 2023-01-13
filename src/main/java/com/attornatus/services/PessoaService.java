@@ -30,7 +30,7 @@ public class PessoaService {
         pessoaDTO.setEndereco(findEndereco(pessoaDTO.getEndereco()));
 
         Pessoa pessoa = repository.save(pessoaDTO.toPessoa());
-        return ResponseEntity.ok(new PessoaDTO().fromPessoa(pessoa));
+        return ResponseEntity.ok(new PessoaDTO(pessoa));
     }
 
     public ResponseEntity<List<PessoaDTO>> read() {
@@ -41,7 +41,7 @@ public class PessoaService {
         System.out.println(pessoas);
 
         pessoas.forEach((pessoa) -> {
-            PessoaDTO pessoaDTO = new PessoaDTO().fromPessoa(pessoa);
+            PessoaDTO pessoaDTO = new PessoaDTO(pessoa);
             System.out.println(pessoaDTO);
             pessoasDTO.add(pessoaDTO);
         });
@@ -54,17 +54,19 @@ public class PessoaService {
         Pessoa pessoa = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pessoa não encontrada"));
 
-        return ResponseEntity.ok(new PessoaDTO().fromPessoa(pessoa));
+        return ResponseEntity.ok(new PessoaDTO(pessoa));
     }
 
     public ResponseEntity<PessoaDTO> update(Long id, PessoaDTO pessoaDTO) {
 
         Pessoa pessoa = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pessoa não encontrada"));
+                
+        pessoaDTO.setId(id);
+        pessoaDTO.setEndereco(findEndereco(pessoaDTO.getEndereco()));
 
         pessoa = repository.save(pessoaDTO.toPessoa());
-
-        return ResponseEntity.ok(new PessoaDTO().fromPessoa(pessoa));
+        return ResponseEntity.ok(new PessoaDTO(pessoa));
     }
 
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {
