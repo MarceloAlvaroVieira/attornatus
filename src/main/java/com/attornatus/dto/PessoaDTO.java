@@ -1,5 +1,6 @@
 package com.attornatus.dto;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import com.attornatus.model.Endereco;
@@ -12,7 +13,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PessoaDTO {
+public class PessoaDTO implements Serializable{
+
+    static private final long serialVersionUID=1L;
+
     private long id;
     private String nome;
     private Date dataNascimento;
