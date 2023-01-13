@@ -27,18 +27,7 @@ public class PessoaService {
 
     public ResponseEntity<PessoaDTO> create(PessoaDTO pessoaDTO) {
 
-        Endereco endereco = enderecoRepository
-            .findByLogradouroAndCepAndCidadeAndNumero(
-                pessoaDTO.getEndereco().getLogradouro(),
-                pessoaDTO.getEndereco().getCep(),
-                pessoaDTO.getEndereco().getCidade(),
-                pessoaDTO.getEndereco().getNumero()
-            );
-
-        if(endereco == null){
-            endereco = enderecoRepository.save(pessoaDTO.getEndereco());
-        }
-        pessoaDTO.setEndereco(endereco);
+        pessoaDTO.setEndereco(findEndereco(pessoaDTO.getEndereco()));
 
         Pessoa pessoa = repository.save(pessoaDTO.toPessoa());
         return ResponseEntity.ok(new PessoaDTO().fromPessoa(pessoa));
@@ -49,8 +38,12 @@ public class PessoaService {
         List<Pessoa> pessoas = repository.findAll();
         List<PessoaDTO> pessoasDTO = new ArrayList<>();
 
+        System.out.println(pessoas);
+
         pessoas.forEach((pessoa) -> {
-            pessoasDTO.add(new PessoaDTO().fromPessoa(pessoa));
+            PessoaDTO pessoaDTO = new PessoaDTO().fromPessoa(pessoa);
+            System.out.println(pessoaDTO);
+            pessoasDTO.add(pessoaDTO);
         });
 
         return ResponseEntity.ok(pessoasDTO);
@@ -85,6 +78,22 @@ public class PessoaService {
         response.put("deleted", Boolean.TRUE);
 
         return ResponseEntity.ok(response);
+    }
+
+    /*
+     * Verifica a existência do endereco na base de dados e o cria, caso não exista
+     */
+    private Endereco findEndereco(Endereco endereco){
+        Long id = endereco.getId();
+        
+        if(id != null)
+            endereco = enderecoRepository.findById(id).orElse(null);
+
+        if(endereco == null){
+            endereco = enderecoRepository.save(endereco);
+        }
+
+        return endereco;
     }
 
 }
