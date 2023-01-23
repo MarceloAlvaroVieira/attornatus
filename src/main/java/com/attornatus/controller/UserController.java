@@ -14,39 +14,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.attornatus.dto.EnderecoDTO;
-import com.attornatus.services.EnderecoService;
+import com.attornatus.dto.UserDTO;
+import com.attornatus.services.UserService;
 
 @RestController
-@RequestMapping("/endereco")
-public class EnderecoController {
+@RequestMapping("/user")
+public class UserController {
     
     @Autowired
-    private EnderecoService service;
+    private UserService service;
 
     @PostMapping()
-    public ResponseEntity<EnderecoDTO> create(@RequestBody EnderecoDTO enderecoDTO){
-        return service.create(enderecoDTO);
+    public ResponseEntity<UserDTO> create(@RequestBody UserDTO userDTO){
+        return service.create(userDTO);
     }
 
     @GetMapping()
-    public ResponseEntity<List<EnderecoDTO>> read(){
+    public ResponseEntity<List<UserDTO>> read(){
         return service.read();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EnderecoDTO> getById(@PathVariable Long id){
+    public ResponseEntity<UserDTO> getById(@PathVariable Long id){
         return service.getById(id);    
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EnderecoDTO> update(@PathVariable Long id, @RequestBody EnderecoDTO enderecoDTO){
-        return service.update(id, enderecoDTO);
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO userDTO){
+        return service.update(id, userDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> delete(@PathVariable Long id){
         return service.delete(id);
     }
-
+    
 }

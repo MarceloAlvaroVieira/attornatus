@@ -14,39 +14,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.attornatus.dto.PessoaDTO;
-import com.attornatus.services.PessoaService;
+import com.attornatus.dto.AddressDTO;
+import com.attornatus.services.AddressService;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
+@RequestMapping("/address")
+public class AddressController {
     
     @Autowired
-    private PessoaService service;
+    private AddressService service;
 
     @PostMapping()
-    public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO pessoaDTO){
-        return service.create(pessoaDTO);
+    public ResponseEntity<AddressDTO> create(@RequestBody AddressDTO addressDTO){
+        return service.create(addressDTO);
     }
 
     @GetMapping()
-    public ResponseEntity<List<PessoaDTO>> read(){
+    public ResponseEntity<List<AddressDTO>> read(){
         return service.read();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaDTO> getById(@PathVariable Long id){
+    public ResponseEntity<AddressDTO> getById(@PathVariable Long id){
         return service.getById(id);    
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaDTO> update(@PathVariable Long id, @RequestBody PessoaDTO pessoaDTO){
-        return service.update(id, pessoaDTO);
+    public ResponseEntity<AddressDTO> update(@PathVariable Long id, @RequestBody AddressDTO addressDTO){
+        return service.update(id, addressDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> delete(@PathVariable Long id){
         return service.delete(id);
     }
-    
+
 }

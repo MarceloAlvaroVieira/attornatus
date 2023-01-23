@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pessoa implements Serializable{
+public class User implements Serializable{
 
     static private final long serialVersionUID=1L;
     
@@ -29,12 +29,12 @@ public class Pessoa implements Serializable{
     private long id;
     
     @Column(nullable = false)
-    private String Nome;
+    private String name;
 
     @Column(nullable = false)
-    private Date dataNascimento;
+    private Date birthDate;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "endereco")
-    private Endereco endereco;
+    @JoinColumn(name = "address")
+    private Address address;
 }

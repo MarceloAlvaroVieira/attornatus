@@ -12,10 +12,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name="endereco")
+@Entity(name="address")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Endereco implements Serializable{
+public class Address implements Serializable{
 
     static private final long serialVersionUID=1L;
     
@@ -24,14 +24,14 @@ public class Endereco implements Serializable{
     private Long id;
 
     @Column(nullable = false)
-    private String logradouro;
+    private String street;
 
     @Column(nullable = false)
-    private String cep;
+    private String zipCode;
 
     @Column(nullable = false)
-    private int numero;
+    private int number;
 
     @Column(nullable = false)
-    private String cidade;
+    private String city;
 }
