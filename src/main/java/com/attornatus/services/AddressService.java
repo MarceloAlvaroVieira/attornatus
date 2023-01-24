@@ -38,34 +38,38 @@ public class AddressService {
     }
 
     public ResponseEntity<AddressDTO> getById(Long id) {
-
-        Address address = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Address"));
-
-        return ResponseEntity.ok(new AddressDTO(address));
+        try {
+            Address address = repository.findById(id).get();    
+            return ResponseEntity.ok(new AddressDTO(address));
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to get address, cause: "+ e);
+        }
+        return null;
     }
 
     public ResponseEntity<AddressDTO> update(Long id, AddressDTO addressDTO) {
-
-        Address address = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Address"));
-
-        address = repository.save(addressDTO.toAddress());
-
-        return ResponseEntity.ok(new AddressDTO(address));
+        try {
+            Address address = repository.findById(id).get();
+            address = repository.save(addressDTO.toAddress());
+            return ResponseEntity.ok(new AddressDTO(address));
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to update address, cause: "+ e);
+        }
+        return null;
     }
 
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {
-
-        Address address = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Address"));
-
-        repository.delete(address);
-
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-
-        return ResponseEntity.ok(response);
+        try {
+            Address address = repository.findById(id).get();
+            repository.delete(address);
+            
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+    
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to delete address, cause: "+ e);
+        }
+        return null;
     }
-
 }

@@ -48,36 +48,43 @@ public class UserService {
     }
 
     public ResponseEntity<UserDTO> getById(Long id) {
-
-        User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User"));
-
-        return ResponseEntity.ok(new UserDTO(user));
+        try {
+            User user = repository.findById(id).get();
+            return ResponseEntity.ok(new UserDTO(user));
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+        }
+        return null;
     }
 
     public ResponseEntity<UserDTO> update(Long id, UserDTO userDTO) {
-
-        User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User"));
-                
-        userDTO.setId(id);
-        userDTO.setAddress(findAddress(userDTO.getAddress()));
-
-        user = repository.save(userDTO.toUser());
-        return ResponseEntity.ok(new UserDTO(user));
+        try {
+            User user = repository.findById(id).get();
+                    
+            userDTO.setId(id);
+            userDTO.setAddress(findAddress(userDTO.getAddress()));
+    
+            user = repository.save(userDTO.toUser());
+            return ResponseEntity.ok(new UserDTO(user));
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+        }
+        return null;
     }
 
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {
-
-        User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User"));
-
-        repository.delete(user);
-
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-
-        return ResponseEntity.ok(response);
+        try {
+            User user = repository.findById(id).get();
+            repository.delete(user);
+    
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+    
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+        }
+        return null;
     }
 
     /*
