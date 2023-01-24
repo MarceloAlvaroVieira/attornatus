@@ -52,7 +52,7 @@ public class UserService {
             User user = repository.findById(id).get();
             return ResponseEntity.ok(new UserDTO(user));
         } catch (Exception e) {
-            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+            new ResourceNotFoundException("Failed to get user, cause: "+ e);
         }
         return null;
     }
@@ -67,7 +67,7 @@ public class UserService {
             user = repository.save(userDTO.toUser());
             return ResponseEntity.ok(new UserDTO(user));
         } catch (Exception e) {
-            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+            new ResourceNotFoundException("Failed to update user, cause: "+ e);
         }
         return null;
     }
@@ -82,7 +82,7 @@ public class UserService {
     
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            new ResourceNotFoundException("Failed to  user, cause: "+ e);
+            new ResourceNotFoundException("Failed to delete user, cause: "+ e);
         }
         return null;
     }
